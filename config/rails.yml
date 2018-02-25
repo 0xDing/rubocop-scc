@@ -1,8 +1,71 @@
+require: rubocop/cop/sequioacap
+
 Rails:
+  Enabled: true
+
+Rails/ActionFilter:
+  Enabled: true
+
+Rails/ApplicationJob:
+  Enabled: true
+
+Rails/ApplicationRecord:
+  Enabled: true
+
+Rails/Blank:
+  Enabled: true
+
+Rails/Date:
+  Enabled: true
+
+Rails/Delegate:
+  Enabled: true
+
+Rails/DelegateAllowBlank:
+  Enabled: true
+
+Rails/EnumUniqueness:
+  Enabled: true
+
+Rails/EnvironmentComparison:
+  Enabled: true
+
+Rails/Exit:
+  Enabled: true
+
+Rails/FilePath:
+  Enabled: true
+
+Rails/FindBy:
+  Enabled: true
+
+Rails/HasAndBelongsToMany:
+  Enabled: true
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: true
+
+Rails/HttpPositionalArguments:
+  Enabled: true
+
+Rails/InverseOf:
   Enabled: true
 
 Rails/FindEach:
   Enabled: false
+
+Rails/LexicallyScopedActionFilter:
+  Enabled: true
+
+Rails/NotNullColumn:
+  Enabled: true
+
+Rails/SafeNavigation:
+  Enabled: true
+  ConvertTry: true
+
+Rails/Output:
+  Enabled: true
 
 Rails/OutputSafety:
   Enabled: true
@@ -10,78 +73,54 @@ Rails/OutputSafety:
 Rails/PluralizationGrammar:
   Enabled: true
 
+Rails/ReadWriteAttribute:
+  Enabled: true
+
+Rails/RedundantReceiverInWithOptions:
+  Enabled: true
+
+Rails/RelativeDateConstant:
+  Enabled: true
+
 Rails/RequestReferer:
   Enabled: true
   EnforcedStyle: referrer
 
+Rails/TimeZone:
+  Enabled: true
+
 Rails/ScopeArgs:
+  Enabled: true
+
+Rails/Validation:
   Enabled: true
 
 Rails/UniqBeforePluck:
   Enabled: true
 
-GitHub/RailsApplicationRecord:
-  Enabled: true
-
-GitHub/RailsControllerRenderActionSymbol:
+Sequioacap/RailsControllerRenderActionSymbol:
   Enabled: true
   Include:
     - 'app/controllers/**/*.rb'
 
-GitHub/RailsControllerRenderLiteral:
+Sequioacap/RailsControllerRenderLiteral:
   Enabled: true
   StyleGuide: https://github.com/github/rubocop-github/blob/master/guides/rails-render-literal.md
   Include:
     - 'app/controllers/**/*.rb'
 
-GitHub/RailsControllerRenderPathsExist:
+Sequioacap/RailsControllerRenderPathsExist:
   Enabled: true
   ViewPath:
     - 'app/views'
   Include:
     - 'app/controllers/**/*.rb'
 
-GitHub/RailsControllerRenderShorthand:
+Sequioacap/RailsControllerRenderShorthand:
   Enabled: true
   StyleGuide: https://github.com/github/rubocop-github/blob/master/guides/rails-controller-render-shorthand.md
   Include:
     - 'app/controllers/**/*.rb'
-
-GitHub/RailsRenderInline:
-  Enabled: true
-  StyleGuide: https://github.com/github/rubocop-github/blob/master/guides/rails-controller-render-inline.md
-  Include:
-    - 'app/controllers/**/*.rb'
-    - 'app/helpers/**/*.rb'
-    - 'app/view_models/**/*.rb'
-    - 'app/views/**/*.erb'
-
-GitHub/RailsRenderObjectCollection:
-  Enabled: false
-
-GitHub/RailsViewRenderLiteral:
-  Enabled: true
-  StyleGuide: https://github.com/github/rubocop-github/blob/master/guides/rails-render-literal.md
-  Include:
-    - 'app/helpers/**/*.rb'
-    - 'app/view_models/**/*.rb'
-    - 'app/views/**/*.erb'
-
-GitHub/RailsViewRenderPathsExist:
-  Enabled: true
-  ViewPath:
-    - 'app/views'
-  Include:
-    - 'app/helpers/**/*.rb'
-    - 'app/view_models/**/*.rb'
-    - 'app/views/**/*.erb'
-
-GitHub/RailsViewRenderShorthand:
-  Enabled: true
-  Include:
-    - 'app/helpers/**/*.rb'
-    - 'app/view_models/**/*.rb'
-    - 'app/views/**/*.erb'
 
 # Exclude Rails ERB files from incompatible cops
 

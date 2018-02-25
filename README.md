@@ -1,13 +1,13 @@
-# RuboCop GitHub
+# RuboCop SCC
 
-This repository provides recommended RuboCop configuration and additional Cops for use on GitHub open source and internal Ruby projects.
+This repository provides recommended RuboCop configuration and additional Cops for use on Sequoia Capital China Ruby projects. Forked from [github/rubocop-github](https://github.com/github/rubocop-github).
 
 ## Installation
 
 **Gemfile**
 
 ``` ruby
-gem "rubocop-github"
+gem "rubocop-scc", github: "sequoia-china/rubocop-scc"
 ```
 
 **.rubocop.yml**
@@ -21,4 +21,8 @@ inherit_gem:
 
 ## The Cops
 
-All cops are located under [`lib/rubocop/cop/github`](lib/rubocop/cop/github), and contain examples/documentation.
+All cops are located under [`lib/rubocop/cop/sequoiacap`](lib/rubocop/cop/sequoiacap), and contain examples/documentation.
+
+> (c) 2018 Sequoia Capital.
+
+

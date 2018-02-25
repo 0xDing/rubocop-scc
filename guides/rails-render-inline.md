@@ -1,4 +1,4 @@
-# GitHub/RailsRenderInline
+# Sequioacap/RailsRenderInline
 
 tldr; Do not use `render inline:`.
 

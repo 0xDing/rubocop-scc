@@ -1,5 +1,8 @@
-require "action_view"
-require "minitest"
+# frozen_string_literal: true
+
+require 'action_view'
+require 'minitest'
+require 'fiddle'
 
 class CopTest < MiniTest::Test
   def cop_class
@@ -21,7 +24,7 @@ class CopTest < MiniTest::Test
   end
 
   def erb_investigate(cop, src, filename = nil)
-    engine = ActionView::Template::Handlers::Erubis.new(src)
+    engine = ActionView::Template::Handlers::ERB::Erubi.new(src)
     investigate(cop, engine.src, filename)
   end
 end

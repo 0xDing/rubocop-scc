@@ -1,8 +1,10 @@
-require "bundler/gem_tasks"
-require "rake/testtask"
-require "rubocop/rake_task"
+# frozen_string_literal: true
 
-task default: [:test, :rubocop]
+require 'bundler/gem_tasks'
+require 'rake/testtask'
+require 'rubocop/rake_task'
+
+task default: %i[test rubocop]
 
 Rake::TestTask.new
 RuboCop::RakeTask.new

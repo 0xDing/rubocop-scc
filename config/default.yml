@@ -1,12 +1,18 @@
-require: rubocop/cop/github
 
 AllCops:
   DisabledByDefault: true
+  TargetRubyVersion: 2.5
 
 Bundler/DuplicatedGem:
   Enabled: true
 
+Bundler/InsecureProtocolSource:
+  Enabled: true
+
 Bundler/OrderedGems:
+  Enabled: true
+
+Layout/AccessModifierIndentation:
   Enabled: true
 
 Layout/BlockEndNewline:
@@ -15,7 +21,46 @@ Layout/BlockEndNewline:
 Layout/EndOfLine:
   Enabled: true
 
+Layout/AlignHash:
+  Enabled: true
+
+Layout/IndentationWidth:
+  Enabled: true
+
+Layout/ElseAlignment:
+  Enabled: true
+
+Layout/EmptyLineAfterMagicComment:
+  Enabled: true
+
+Layout/EmptyLineBetweenDefs:
+  Enabled: true
+
+Layout/EmptyLines:
+  Enabled: true
+
+Layout/EmptyLinesAroundAccessModifier:
+  Enabled: true
+
+Layout/EmptyLinesAroundBeginBody:
+  Enabled: true
+
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: true
+
+Layout/EmptyLinesAroundExceptionHandlingKeywords:
+  Enabled: true
+
 Layout/InitialIndentation:
+  Enabled: true
+
+Layout/RescueEnsureAlignment:
+  Enabled: true
+
+Layout/AlignParameters:
+  Enabled: true
+
+Layout/DotPosition:
   Enabled: true
 
 Layout/SpaceAfterColon:
@@ -115,7 +160,19 @@ Lint/EndInMethod:
 Lint/EnsureReturn:
   Enabled: true
 
+Lint/AssignmentInCondition:
+  Enabled: true
+
+Lint/AmbiguousRegexpLiteral:
+  Enabled: true
+
+Lint/BooleanSymbol:
+  Enabled: true
+
 Lint/FloatOutOfRange:
+  Enabled: true
+
+Lint/SafeNavigationChain:
   Enabled: true
 
 Lint/FormatParameterMismatch:
@@ -176,7 +233,8 @@ Metrics/BlockNesting:
   Enabled: false
 
 Metrics/ClassLength:
-  Enabled: false
+  Enabled: true
+  Max: 300
 
 Metrics/CyclomaticComplexity:
   Enabled: false
@@ -185,7 +243,8 @@ Metrics/LineLength:
   Enabled: false
 
 Metrics/MethodLength:
-  Enabled: false
+  Enabled: true
+  Max: 50
 
 Metrics/ModuleLength:
   Enabled: false
@@ -205,11 +264,32 @@ Naming/ClassAndModuleCamelCase:
 Naming/FileName:
   Enabled: true
 
+Naming/HeredocDelimiterCase:
+  Enabled: true
+
+Naming/ConstantName:
+  Enabled: true
+
+Naming/AccessorMethodName:
+  Enabled: true
+
 Naming/MethodName:
+  Enabled: true
+
+Naming/PredicateName:
+  Enabled: true
+
+Naming/VariableNumber:
   Enabled: true
 
 Performance/CaseWhenSplat:
   Enabled: false
+
+Performance/Casecmp:
+  Enabled: true
+
+Performance/CompareWithBlock:
+  Enabled: true
 
 Performance/Count:
   Enabled: true
@@ -249,6 +329,15 @@ Performance/ReverseEach:
   Enabled: true
 
 Performance/Sample:
+  Enabled: true
+
+Performance/UnfreezeString:
+  Enabled: true
+
+Performance/TimesMap:
+  Enabled: true
+
+Performance/UriDefaultParser:
   Enabled: true
 
 Performance/Size:
@@ -326,4 +415,194 @@ Style/StabbyLambdaParentheses:
 
 Style/StringLiterals:
   Enabled: true
-  EnforcedStyle: double_quotes
+
+Style/DateTime:
+  Enabled: true
+
+Style/Alias:
+  Enabled: true
+
+Style/AndOr:
+  Enabled: true
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Attr:
+  Enabled: true
+
+Style/AutoResourceCleanup:
+  Enabled: true
+
+Style/BarePercentLiterals:
+  Enabled: true
+
+Style/BlockDelimiters:
+  Enabled: true
+
+Style/BracesAroundHashParameters:
+  Enabled: true
+
+Style/ClassCheck:
+  Enabled: true
+
+Style/ClassVars:
+  Enabled: true
+
+Style/ColonMethodCall:
+  Enabled: true
+
+Style/ColonMethodDefinition:
+  Enabled: true
+
+Style/CommandLiteral:
+  Enabled: true
+
+Style/CommentAnnotation:
+  Enabled: true
+
+Style/Dir:
+  Enabled: true
+
+Style/DoubleNegation:
+  Enabled: true
+
+Style/EachForSimpleLoop:
+  Enabled: true
+
+Style/EachWithObject:
+  Enabled: true
+
+Style/EmptyBlockParameter:
+  Enabled: true
+
+Style/EmptyElse:
+  Enabled: true
+
+Style/EmptyLambdaParameter:
+  Enabled: true
+
+Style/EmptyMethod:
+  Enabled: true
+
+Style/Encoding:
+  Enabled: true
+
+Style/EvenOdd:
+  Enabled: true
+
+Style/GuardClause:
+  Enabled: true
+
+Style/IfInsideElse:
+  Enabled: true
+
+Style/IfUnlessModifier:
+  Enabled: true
+
+Style/IfUnlessModifierOfIfUnless:
+  Enabled: true
+
+Style/IfWithSemicolon:
+  Enabled: true
+
+Style/ImplicitRuntimeError:
+  Enabled: true
+
+Style/InfiniteLoop:
+  Enabled: true
+
+Style/InlineComment:
+  Enabled: true
+
+Style/MethodMissing:
+  Enabled: true
+
+Style/MinMax:
+  Enabled: true
+
+Style/NestedModifier:
+  Enabled: true
+
+Style/NestedParenthesizedCalls:
+  Enabled: true
+
+Style/NonNilCheck:
+  Enabled: true
+
+Style/NumericLiteralPrefix:
+  Enabled: true
+
+Style/NumericPredicate:
+  Enabled: true
+
+Style/OrAssignment:
+  Enabled: true
+
+Style/PreferredHashMethods:
+  Enabled: true
+
+Style/Proc:
+  Enabled: true
+
+Style/RaiseArgs:
+  Enabled: true
+  EnforcedStyle: compact
+
+Style/RandomWithOffset:
+  Enabled: true
+
+Style/RedundantConditional:
+  Enabled: true
+
+Style/RedundantParentheses:
+  Enabled: true
+
+Style/ReturnNil:
+  Enabled: true
+
+Style/Semicolon:
+  Enabled: true
+
+Style/StderrPuts:
+  Enabled: true
+
+Style/StringHashKeys:
+  Enabled: true
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+
+Style/SymbolArray:
+  Enabled: true
+
+Style/SymbolLiteral:
+  Enabled: true
+
+Style/SymbolProc:
+  Enabled: true
+
+Style/WhenThen:
+  Enabled: true
+
+Style/WhileUntilModifier:
+  Enabled: true
+
+Style/WordArray:
+  Enabled: true
+
+Style/YodaCondition:
+  Enabled: true
+  EnforcedStyle: equality_operators_only
+
+Security/JSONLoad:
+  Enabled: true
+
+ZeroLengthPredicate:
+  Enabled: true
+
+Gemspec/DuplicatedAssignment:
+  Enabled: true
+
+Gemspec/OrderedDependencies:
+  Enabled: true

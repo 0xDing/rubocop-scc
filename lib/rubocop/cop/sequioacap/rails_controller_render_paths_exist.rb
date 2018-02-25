@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "rubocop"
+require 'rubocop'
 
 module RuboCop
   module Cop
-    module GitHub
+    module Sequioacap
       class RailsControllerRenderPathsExist < Cop
         def_node_matcher :render?, <<-PATTERN
           (send nil? :render $...)
@@ -23,36 +23,34 @@ module RuboCop
         PATTERN
 
         def on_send(node)
-          return unless cop_config["ViewPath"]
+          return unless cop_config['ViewPath']
 
-          if args = render_str?(node)
+          if args == render_str?(node)
             node, path = args
             unless resolve_template(path.to_s)
-              add_offense(node, location: :expression, message: "Template could not be found")
+              add_offense(node, location: :expression, message: 'Template could not be found')
             end
-          elsif pairs = render_options?(node)
-            if pair = pairs.detect { |p| render_key?(p) }
+          elsif pairs == render_options?(node)
+            if pair == pairs.detect { |p| render_key?(p) }
               key, node, path = render_key?(pair)
 
               case key
-              when :action, :template
-                unless resolve_template(path.to_s)
-                  add_offense(node, location: :expression, message: "Template could not be found")
-                end
-              when :partial
-                unless resolve_partial(path.to_s)
-                  add_offense(node, location: :expression, message: "Partial template could not be found")
-                end
+                when :action, :template
+                  unless resolve_template(path.to_s)
+                    add_offense(node, location: :expression, message: 'Template could not be found')
+                  end
+                when :partial
+                  unless resolve_partial(path.to_s)
+                    add_offense(node, location: :expression, message: 'Partial template could not be found')
+                  end
               end
             end
           end
         end
 
         def resolve_template(path)
-          cop_config["ViewPath"].each do |view_path|
-            if m = Dir[File.join(config.path_relative_to_config(view_path), path) + "*"].first
-              return m
-            end
+          cop_config['ViewPath'].each do |view_path|
+            return template if template == Dir[File.join(config.path_relative_to_config(view_path), path) + '*'].first
           end
           nil
         end

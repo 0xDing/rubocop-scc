@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "rubocop"
+require 'rubocop'
 
 module RuboCop
   module Cop
-    module GitHub
+    module Sequioacap
       class RailsControllerRenderShorthand < Cop
-        MSG = "Prefer `render` template shorthand"
+        MSG = 'Prefer `render` template shorthand'
 
         def_node_matcher :render_with_options?, <<-PATTERN
           (send nil? :render (hash $...))
@@ -29,13 +29,15 @@ module RuboCop
         end
 
         def on_send(node)
-          if option_pairs = render_with_options?(node)
+          option_pairs = render_with_options?(node)
+          return unless option_pairs
             option_pairs.each do |pair|
-              if value_node = action_key?(pair)
-                comma = option_pairs.length > 1 ? ", " : ""
+              value_node = action_key?(pair)
+              if value_node
+                comma = option_pairs.length > 1 ? ', ' : ''
                 corrected_source = node.source
-                  .sub(/#{pair.source}(,\s*)?/, "")
-                  .sub("render ", "render \"#{str(value_node)}\"#{comma}")
+                                       .sub(/#{pair.source}(,\s*)?/, '')
+                                       .sub('render ', "render '#{str(value_node)}'#{comma}")
 
                 @autocorrect[node] = lambda do |corrector|
                   corrector.replace(node.source_range, corrected_source)
@@ -43,7 +45,6 @@ module RuboCop
                 add_offense(node, location: :expression, message: "Use `#{corrected_source}` instead")
               end
             end
-          end
         end
       end
     end

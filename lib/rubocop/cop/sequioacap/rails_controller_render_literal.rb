@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "rubocop"
+require 'rubocop'
 
 module RuboCop
   module Cop
-    module GitHub
+    module Sequioacap
       class RailsControllerRenderLiteral < Cop
-        MSG = "render must be used with a string literal"
+        MSG = 'render must be used with a string literal'
 
         def_node_matcher :literal?, <<-PATTERN
           ({str sym true false nil?} ...)
@@ -62,16 +62,14 @@ module RuboCop
 
         def on_send(node)
           return unless render?(node)
-
           if render_literal?(node)
-          elsif option_pairs = render_with_options?(node)
+          elsif render_with_options?(node)
+            option_pairs = render_with_options?(node)
             option_pairs = option_pairs.reject { |pair| options_key?(pair) }
 
-            if option_pairs.any? { |pair| ignore_key?(pair) }
-              return
-            end
-
-            if template_node = option_pairs.map { |pair| template_key?(pair) }.compact.first
+            return if option_pairs.any? { |pair| ignore_key?(pair) }
+            template_node = option_pairs.map { |pair| template_key?(pair) }.compact.first
+            if template_node
               if !literal?(template_node)
                 add_offense(node, location: :expression)
               end
@@ -79,10 +77,9 @@ module RuboCop
               add_offense(node, location: :expression)
             end
 
-            if layout_node = option_pairs.map { |pair| layout_key?(pair) }.compact.first
-              if !literal?(layout_node)
-                add_offense(node, location: :expression)
-              end
+            layout_node = option_pairs.map { |pair| layout_key?(pair) }.compact.first
+            if layout_node
+              add_offense(node, location: :expression) if !literal?(layout_node)
             end
           else
             add_offense(node, location: :expression)

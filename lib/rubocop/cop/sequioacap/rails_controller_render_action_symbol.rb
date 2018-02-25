@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "rubocop"
+require 'rubocop'
 
 module RuboCop
   module Cop
-    module GitHub
+    module Sequioacap
       class RailsControllerRenderActionSymbol < Cop
-        MSG = "Prefer `render` with string instead of symbol"
+        MSG = 'Prefer `render` with string instead of symbol'
 
         def_node_matcher :render_sym?, <<-PATTERN
           (send nil? :render $(sym _))
@@ -21,20 +21,21 @@ module RuboCop
         PATTERN
 
         def on_send(node)
-          if sym_node = render_sym?(node)
+          sym_node = render_sym?(node)
+          option_pairs = render_with_options?(node)
+          if sym_node
             add_offense(sym_node, location: :expression)
-          elsif option_pairs = render_with_options?(node)
+          elsif option_pairs
             option_pairs.each do |pair|
-              if sym_node = action_key?(pair)
-                add_offense(sym_node, location: :expression)
-              end
+              sym_node = action_key?(pair)
+              add_offense(sym_node, location: :expression) if sym_node
             end
           end
         end
 
         def autocorrect(node)
           lambda do |corrector|
-            corrector.replace(node.source_range, "\"#{node.children[0]}\"")
+            corrector.replace(node.source_range, "'#{node.children[0]}'")
           end
         end
       end
