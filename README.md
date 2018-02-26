@@ -14,7 +14,7 @@ gem "rubocop-scc", github: "sequoia-china/rubocop-scc"
 
 ``` yaml
 inherit_gem:
-  rubocop-github:
+  rubocop-scc:
     - config/default.yml
     - config/rails.yml
 ```

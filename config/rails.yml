@@ -58,7 +58,7 @@ Rails/LexicallyScopedActionFilter:
   Enabled: true
 
 Rails/NotNullColumn:
-  Enabled: true
+  Enabled: false
 
 Rails/SafeNavigation:
   Enabled: true
