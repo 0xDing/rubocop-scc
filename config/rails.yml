@@ -122,6 +122,34 @@ Sequioacap/RailsControllerRenderShorthand:
   Include:
     - 'app/controllers/**/*.rb'
 
+Sequioacap/ClassName:
+  Description: Use :class_name => "Model" instead of :class_name => Model.name
+    to avoid a long cascade of autoloading.
+  Enabled: true
+
+Sequioacap/DefaultScope:
+  Description: Avoid `default_scope`.  Default scopes make it difficult to
+    refactor data access patterns since the scope becomes part of every query unless
+    explicitly excluded, even when it is unnecessary or incidental to the desired logic.
+  Enabled: true
+
+Sequioacap/FactoryClassUseString:
+  Description: Cop to tell developers to use :class => "MyClass" instead of :class => MyClass,
+    because the latter slows down reloading zeus.
+  Enabled: true
+
+Sequioacap/NoTimeout:
+  Description: Do not use Timeout.timeout. In combination with Rails autoloading,
+    timeout can cause Segmentation Faults in version of Ruby we use.
+    It can also cause logic errors since it can raise in
+    any callee scope. Use client library timeouts and monitoring to
+    ensure proper timing behavior for web requests.
+  Enabled: true
+
+Sequioacap/SimpleModifierConditional:
+  Enabled: true
+  StyleGuide: https://github.com/airbnb/ruby#only-simple-if-unless
+
 # Exclude Rails ERB files from incompatible cops
 
 Lint/BlockAlignment:

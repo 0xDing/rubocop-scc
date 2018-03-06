@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir['README.md', 'STYLEGUIDE.md', 'LICENSE', 'config/*.yml', 'lib/**/*.rb', 'guides/*.md']
 
-  s.add_dependency 'rubocop', '~> 0.52'
+  s.add_dependency 'rubocop', '~> 0.53'
 
   s.add_development_dependency 'actionview', '~> 5.1'
   s.add_development_dependency 'erubis', '~> 2.7'
